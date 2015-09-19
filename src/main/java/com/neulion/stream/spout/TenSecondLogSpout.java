@@ -20,7 +20,6 @@ import backtype.storm.tuple.Values;
 import com.neulion.stream.MessageBean;
 
 /**
- * 用来读取十秒的日志数据的。由于日志数据太少了。所以就不用这个spout
  * @author hellojinjie
  * @Date 2013-1-16
  */
@@ -35,33 +34,27 @@ public class TenSecondLogSpout extends BaseRichSpout {
 	private ArrayList<List<Object>> logData = new ArrayList<List<Object>>();
 	
 	/**
-	 * 最后一次输出消息的时间，单位秒
 	 */
 	private long lastEmitTime;
 	
 	/**
-	 * 已经输出了多少秒的数据
 	 */
 	private long clock = 0;
 	
 	@SuppressWarnings("rawtypes")
-	@Override
 	public void open(Map conf, TopologyContext context,
 			SpoutOutputCollector collector) {
 		this.collector = collector;
 		try {
 			this.prepareData();
 		} catch (Exception e) {
-			log.fatal("读取日志文件错误", e);
+			log.fatal("", e);
 		}
 		this.lastEmitTime = System.currentTimeMillis() / 1000;
 	}
 
 	/**
-	 * 一共有10秒的数据，这里我们反复的重复发送这个十秒的数据。
-	 * 这十秒的数据已经存储在 logData 里。
 	 */
-	@Override
 	public void nextTuple() {
 		long currentTime = System.currentTimeMillis() / 1000;
 		if (currentTime == this.lastEmitTime) {
@@ -85,13 +78,11 @@ public class TenSecondLogSpout extends BaseRichSpout {
 		this.clock = this.clock + count;
 	}
 
-	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
 		declarer.declare(new Fields("message"));
 	}
 
 	/**
-	 * 把所有的日志信息预处理后，存储到一个list中
 	 * 
 	 * @throws Exception
 	 */
@@ -100,7 +91,7 @@ public class TenSecondLogSpout extends BaseRichSpout {
 		String oneLine = br.readLine();
 		if (oneLine == null) {
 			br.close();
-			throw new Exception("日志文件是个空文件");
+			throw new Exception("!!!");
 		}
 		
 		String currentTime = "";

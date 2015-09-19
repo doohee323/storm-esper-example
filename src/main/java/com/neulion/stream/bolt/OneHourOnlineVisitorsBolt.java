@@ -22,7 +22,6 @@ import com.neulion.stream.MessageBean;
 
 
 /**
- * 统计在线观看者的 bolt
  *  
  * @author hellojinjie
  * @Date 2013-1-16
@@ -36,7 +35,6 @@ public class OneHourOnlineVisitorsBolt extends BaseRichBolt {
 	private EPServiceProvider epService;
 	
 	@SuppressWarnings("rawtypes")
-	@Override
 	public void prepare(Map stormConf, TopologyContext context,
 			OutputCollector collector) {
 		this.collector = collector;
@@ -58,7 +56,6 @@ public class OneHourOnlineVisitorsBolt extends BaseRichBolt {
 						"output snapshot every 2 sec");
 		visitorsStatement.addListener(new UpdateListener() {
 
-			@Override
 			public void update(EventBean[] arg0, EventBean[] arg1) {
 				if (arg0 != null) {
 					for (EventBean e : arg0) {
@@ -78,7 +75,6 @@ public class OneHourOnlineVisitorsBolt extends BaseRichBolt {
 		);
 		appTypeStatement.addListener(new UpdateListener() {
 
-			@Override
 			public void update(EventBean[] arg0, EventBean[] arg1) {
 				if (arg0 != null) {
 					StringBuilder sb = new StringBuilder();
@@ -107,7 +103,6 @@ public class OneHourOnlineVisitorsBolt extends BaseRichBolt {
 		);
 		deviceTypeStatement.addListener(new UpdateListener() {
 
-			@Override
 			public void update(EventBean[] arg0, EventBean[] arg1) {
 				if (arg0 != null) {
 					StringBuilder sb = new StringBuilder();
@@ -129,7 +124,6 @@ public class OneHourOnlineVisitorsBolt extends BaseRichBolt {
 		});
 	}
 	
-	@Override
 	public void execute(Tuple input) {
 		List<Object> values = input.getValues();
 		epService.getEPRuntime().sendEvent(values.get(0));
@@ -137,9 +131,7 @@ public class OneHourOnlineVisitorsBolt extends BaseRichBolt {
 	}
 
 	/**
-	 * 没有后续的 bolt，所以这个方法可以不实现
 	 */
-	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
 		
 	}

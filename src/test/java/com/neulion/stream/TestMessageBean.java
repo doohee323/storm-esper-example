@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.Test;
 
-public class MessageBeanTest {
+public class TestMessageBean {
 
 	@Test
 	public void testParse() throws UnsupportedEncodingException {

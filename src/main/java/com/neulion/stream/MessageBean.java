@@ -98,42 +98,4 @@ public class MessageBean {
 	public void setDeviceType(String deviceType) {
 		this.deviceType = deviceType;
 	}
-
-	
-	/* 下面是完整的一个日志带有的字段，我们测试的时候为了简单，只取其中几个字段
-	private long msgID;
-	private String eventType;
-	private String clientID;
-	private String viewID;
-	private long playTime;
-	private int streamType;
-	private String streamURL;
-	private long streamLength;
-	private long startupTime;
-	private long updateInterval;
-	private long bitrate;
-	private String os;
-	private String player;
-	private String browserVersion;
-	private long bandwidth;
-	private long dropFrameCount;
-	private String cdnName;
-	private long bytesLoaded;
-	private long bytesLoadedDelta;
-	private String cdnName;
-	private long bytesLoaded;
-	private long bytesLoadedDelta;
-	private String gameDate;
-	private String homeTeam;
-	private String productID;
-	private String userID;
-	private String progType;
-	private String appType;
-	private String windowMode;
-	private String siteID;
-	private String streamDescription;
-	private String awayTeam;
-	private String gameID;
-	private String ipAddress;
-	*/
 }
