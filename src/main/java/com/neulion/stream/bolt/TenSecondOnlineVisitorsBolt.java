@@ -49,7 +49,7 @@ public class TenSecondOnlineVisitorsBolt extends BaseRichBolt {
 		epService.initialize();
 		
 		EPStatement statement = epService.getEPAdministrator().
-				createEPL("select count(distinct Log.clientID) as total from Log.win:time(6 second) output snapshot every 2 sec");
+				createEPL("select count(distinct Log.clientID) as total from Log.win:time(2 second) output snapshot every 2 sec");
 		statement.addListener(new UpdateListener() {
 
 			public void update(EventBean[] arg0, EventBean[] arg1) {
